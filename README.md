@@ -22,7 +22,7 @@ TBA
 
 |Taxonomy | Template Model | Reactions | Metabolites| Genes |
 | ------------- |:-------------:|:-------------:|:-------------:|-----:|
-|_Kluyveromyces marxianus_ | iOD907 | 1913|	1531|	996|
+|_Kluyveromyces marxianus_ | iOD907 | 1913|	1531|	996 |
 
 This repository is administered by Simonas Marcišauskas ([@simas232](https://github.com/simas232)), Division of Systems and Synthetic Biology, Department of Biology and Biological Engineering, Chalmers University of Technology
 
