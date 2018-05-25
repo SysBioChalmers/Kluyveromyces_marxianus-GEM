@@ -33,7 +33,7 @@ This repository is administered by Simonas Marcišauskas ([@simas232](https://gi
 
 ### Required Software:
 
-* A functional Matlab installation (MATLAB 7.3 or higher)
+* A functional MATLAB installation (version 7.3 or higher)
 * One of the following:
   * [The RAVEN Toolbox for MATLAB](https://github.com/SysBioChalmers/RAVEN).
   * [The COBRA Toolbox for MATLAB](https://github.com/opencobra/cobratoolbox).
@@ -45,7 +45,7 @@ This repository is administered by Simonas Marcišauskas ([@simas232](https://gi
 
 ### Installation Instructions
 * Clone [Kluyveromyces_marxianus-GEM](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM) from [SysBioChalmers GitHub](https://github.com/SysBioChalmers)
-* Add the directory to your Matlab path, instructions [here](https://se.mathworks.com/help/matlab/ref/addpath.html?requestedDomain=www.mathworks.com)
+* Add the directory to your MATLAB path, instructions [here](https://se.mathworks.com/help/matlab/ref/addpath.html?requestedDomain=www.mathworks.com)
 
 ### Contribute To Development
 1. Fork the repository to your own Github account
