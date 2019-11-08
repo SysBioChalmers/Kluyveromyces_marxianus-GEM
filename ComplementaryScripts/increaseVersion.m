@@ -56,7 +56,7 @@ initCobraToolbox
 model = readCbModel('../ModelFiles/xml/kmxGEM.xml');
 
 %Include tag and save model:
-model.modelID = ['yeastGEM_v' newVersion];
+model.modelID = ['kmxGEM_v' newVersion];
 saveYeastModel(model,false)
 
 %Check if any file changed (except for history.md and 1 line in yeastGEM.xml):
