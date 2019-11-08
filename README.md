@@ -33,7 +33,7 @@ This repository is administered by Simonas Marcišauskas ([@simas232](https://gi
 
 ### Required Software - Contributor:
 
-* Both of the previous MATLAB requirements.
+* Both of the previous MATLAB requirements
 * The [RAVEN Toolbox for MATLAB](https://github.com/SysBioChalmers/RAVEN)
 * A [git wrapper](https://github.com/manur/MATLAB-git) added to the search path
 
@@ -42,8 +42,8 @@ This repository is administered by Simonas Marcišauskas ([@simas232](https://gi
 * [Gurobi Optimizer](http://www.gurobi.com/registration/download-reg) for any simulations
 
 ### Installation Instructions
-* For users: Clone it from [`master`](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM) in the GitHub repo, or just download [the latest release](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/releases).
-* For contributors: Fork it to your GitHub account, and create a new branch from [`devel`](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/tree/devel).
+* For users: Clone it from [`master`](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM) in the GitHub repo, or just download [the latest release](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/releases)
+* For contributors: Fork it to your GitHub account, and create a new branch from [`devel`](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/tree/devel)
 
 ## Usage
 
