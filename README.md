@@ -4,7 +4,7 @@
 
 * Brief Model Description:
 
-This repository contains the current consensus genome-scale metabolic model of _Kluyveromyces marxianus_. For the latest release please [click here](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/releases).
+This repository contains the current consensus genome-scale metabolic model of the ascomycetous yeast _Kluyveromyces marxianus_. The model contains 4 compartments: extracellular, cytosol, mitochondrion and endoplasmic reticulum. For the latest release please [click here](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/releases).
 
 * Model KeyWords:
 
@@ -87,3 +87,6 @@ Contributions are always welcome! Please read the [contributions guideline](http
 ## Contributors
 
 * [Simonas Marcišauskas](https://www.chalmers.se/en/Staff/Pages/simmarc.aspx) ([@simas232](https://github.com/simas232)), Chalmers University of Technology, Sweden
+
+## More from SysBio Chalmers
+For more recently published genome-scale models and systems biology related software from the Systems and Synthetic Biology group at Chalmers University of Technology, please visit the [GitHub page](https://github.com/SysBioChalmers). For more information and publications by the Systems and Synthetic Biology please visit [SysBio](https://www.sysbio.se/).
