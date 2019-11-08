@@ -10,7 +10,7 @@ This repository contains the current consensus genome-scale metabolic model of _
 
 **GEM Category:** species; **Utilisation:** experimental data reconstruction, multi-omics integrative analysis, _in silico_ strain design, model template; **Field:** metabolic-network reconstruction; **Type of Model:** reconstruction, curated; **Model Source:** iOD907, [yeast-GEM](https://github.com/SysBioChalmers/yeast-GEM); **Omic Source:** genomics; **Taxonomy:** _Kluyveromyces marxianus_; **Metabolic System:** general metabolism; **Bioreactor**; **Strain;** **Condition:** aerobic, glucose-limited, defined media;
 
-* Last update: 2018-05-25
+* Last update: 2019-11-08
 
 * Main Model Descriptors:
 
