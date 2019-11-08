@@ -36,7 +36,7 @@ uptakeRxnIndexes     = findRxnIDs(model,desiredExchanges);
 glucoseExchangeIndex = findRxnIDs(model,glucoseExchange);
 BlockedRxnIndex      = findRxnIDs(model,blockedExchanges);
 
-if length(find(uptakeRxnIndexes~= 0)) ~= 15
+if length(find(uptakeRxnIndexes~= 0)) ~= 13
     warning('Not all exchange reactions were found.')
 end
 
