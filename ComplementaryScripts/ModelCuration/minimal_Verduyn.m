@@ -8,7 +8,7 @@ function model = minimal_Verduyn(model)
 % and lower bound = 0 (ie, unconstrained excretion, no uptake)
 
 % Based on function minimal_Y6 written by Feiran Li 2018.09.05 (https://github.com/SysBioChalmers/yeast-GEM)
-% Simonas Marcisauskas - adaptation for Kluyveromyces_marxianus-GEM
+% Simonas Marcisauskas, 2019-11-08 - adaptation for Kluyveromyces_marxianus-GEM
 
 exchangeRxns = findExcRxns(model);
 model.lb(exchangeRxns) = 0;
@@ -40,7 +40,20 @@ if length(find(uptakeRxnIndexes~= 0)) ~= 13
     warning('Not all exchange reactions were found.')
 end
 
-model.lb(uptakeRxnIndexes(uptakeRxnIndexes~=0))     = -1000;
+model.lb(uptakeRxnIndexes(uptakeRxnIndexes~=0)) = ...
+                      [-50; ... % H2O exchange
+                       -50; ... % H+ exchange
+                       -20; ... % oxygen exchange
+                   -1.3634; ... % ammonium exchange
+                   -0.6822; ... % sulphate exchange
+                  -0.39716; ... % phosphate exchange
+                   -0.0025; ... % myo-inositol exchange
+               -0.00019421; ... % iron exchange
+               -0.00014654; ... % nicotinate exchange
+               -0.00010682; ... % pyridoxine exchange
+              -0.000067974; ... % thiamine exchange
+               -0.00003796; ... % (R)-pantothenate exchange
+              -0.000026484];    % 4-aminobenzoate exchange                   
 model.lb(glucoseExchangeIndex) = -1;
 
 model.lb(BlockedRxnIndex) = 0;
