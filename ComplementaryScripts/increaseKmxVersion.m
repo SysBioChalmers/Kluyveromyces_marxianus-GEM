@@ -1,28 +1,31 @@
-function increaseVersion(bumpType)
-% increaseVersion
-%   Upgrades the model to a new version. Run this function after merging
+function increaseKmxVersion(bumpType)
+% increaseKmxVersion
+%	Upgrade the model to a new version. Run this function after merging
 %   changes to the master branch for making a new release.
 %
-%   bumpType    One of the following 3 strings: "major", "minor" or
+%   Input:
+%   bumpType	One of the following 3 strings: "major", "minor" or
 %               "patch", indicating the type of increase of version to be
-%               performed.
+%               performed
 %
 %   NOTE: This function requires a git wrapper added to the MATLAB search
 %         path: https://github.com/manur/MATLAB-git
 %
-%   Usage: increaseVersion(bumpType)
+%   Usage: increaseKmxVersion(bumpType)
 %
-%   Benjamin Sanchez, 2018-09-25
-%   Simonas Marcisauskas, 2019-11-07 - adaptation for Kluyveromyces_marxianus-GEM
+%   Based on function increaseVersion written by Benjamin Sanchez
+%   (https://github.com/SysBioChalmers/yeast-GEM)
+%   Simonas Marcisauskas, 2019-11-10 - adaptation for
+%   Kluyveromyces_marxianus-GEM
 %
 
-%Check if in master:
+%Check if in master
 currentBranch = git('rev-parse --abbrev-ref HEAD');
 if ~strcmp(currentBranch,'master')
     error('ERROR: not in master')
 end
 
-%Bump version number:
+%Bump version number
 oldModel   = load('../ModelFiles/mat/kmxGEM.mat');
 oldVersion = oldModel.model.modelID;
 oldVersion = oldVersion(strfind(oldVersion,'_v')+2:end);
@@ -43,7 +46,7 @@ switch bumpType
 end
 newVersion = num2str(newVersion,'%d.%d.%d');
 
-%Check if history has been updated:
+%Check if history has been updated
 fid     = fopen('../history.md','r');
 history = fscanf(fid,'%s');
 fclose(fid);
@@ -51,15 +54,15 @@ if ~contains(history,['yeast' newVersion ':'])
     error('ERROR: update history.md first')
 end
 
-%Load model:
+%Load model
 initCobraToolbox
 model = readCbModel('../ModelFiles/xml/kmxGEM.xml');
 
-%Include tag and save model:
+%Include tag and save model
 model.modelID = ['kmxGEM_v' newVersion];
 saveYeastModel(model,false)
 
-%Check if any file changed (except for history.md and 1 line in yeastGEM.xml):
+%Check if any file changed (except for history.md and 1 line in kmxGEM.xml)
 diff   = git('diff --numstat');
 diff   = strsplit(diff,'\n');
 change = false;
@@ -84,7 +87,7 @@ if change
         'then merge to master, and try again.'])
 end
 
-%Allow .mat & .xlsx storage:
+%Allow .mat & .xlsx storage
 copyfile('../.gitignore','backup')
 fin  = fopen('backup','r');
 fout = fopen('../.gitignore','w');
@@ -100,10 +103,10 @@ end
 fclose('all');
 delete('backup');
 
-%Store model as .mat:
+%Store model as .mat
 save('../ModelFiles/mat/kmxGEM.mat','model');
 
-%Convert to RAVEN format and store model as .xlsx:
+%Convert to RAVEN format and store model as .xlsx
 model = ravenCobraWrapper(model);
 model.annotation.defaultLB    = -1000;
 model.annotation.defaultUB    = +1000;
@@ -115,7 +118,7 @@ model.annotation.organization = 'Chalmers University of Technology';
 model.annotation.note         = 'Kluyveromyces marxianus';
 exportToExcelFormat(model,'../ModelFiles/xlsx/kmxGEM.xlsx');
 
-%Update version file:
+%Update version file
 fid = fopen('../version.txt','wt');
 fprintf(fid,newVersion);
 fclose(fid);

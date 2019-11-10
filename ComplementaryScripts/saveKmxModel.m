@@ -1,17 +1,20 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% saveYeastModel(model,upDATE)
-% Saves model as a .xml, .txt and .yml file. Also updates complementary
-% files (boundaryMets.txt, README.md and dependencies.txt).
+function saveKmxModel(model,upDATE)
+% saveKmxModel
+%	Save model as a .xml, .txt and .yml file. Also update complementary
+%	files (boundaryMets.txt, README.md and dependencies.txt).
 %
-% model     model structure to save (note: must be in COBRA format)
-% upDATE    logical =true if updating the date in the README file is needed
+%	Input:
+%	model	model structure to save (note: must be in COBRA format)
+%	upDATE	true if updating the date in the README file is needed
 %           (opt, default true)
 %
-% Benjamin J. Sanchez
-% Simonas Marcisauskas, 2019-11-07 - adaptation for Kluyveromyces_marxianus-GEM
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-function saveYeastModel(model,upDATE)
+%   Usage: saveKmxModel(model,upDATE)
+%
+%	Based on function saveYeastModel written by Benjamin Sanchez
+%	(https://github.com/SysBioChalmers/yeast-GEM)
+%	Simonas Marcisauskas, 2019-11-10 - adaptation for
+%	Kluyveromyces_marxianus-GEM
+%
 
 if nargin < 2
     upDATE = true;
@@ -27,17 +30,17 @@ cd modelCuration
 model = minimal_Verduyn(model);
 cd ..
 
-%Delete model.grRules (redundant and possibly conflicting with model.rules):
+%Delete model.grRules (redundant and possibly conflicting with model.rules)
 if isfield(model,'grRules')
     model = rmfield(model,'grRules');
 end
 
-%Update SBO terms in model:
+%Update SBO terms in model
 cd missingFields
 model = addSBOterms(model);
 cd ..
 
-%Check if model is a valid SBML structure:
+%Check if model is a valid SBML structure
 writeCbModel(model,'sbml','tempModel.xml');
 [~,errors] = TranslateSBML('tempModel.xml');
 % if ~isempty(errors)
@@ -45,13 +48,13 @@ writeCbModel(model,'sbml','tempModel.xml');
 %     error('Model should be a valid SBML structure. Please fix all errors before saving.')
 % end
 
-%Update .xml, .txt and .yml models:
+%Update .xml, .txt and .yml models
 copyfile('tempModel.xml','../ModelFiles/xml/kmxGEM.xml')
 delete('tempModel.xml');
 writeCbModel(model,'text','../ModelFiles/txt/kmxGEM.txt');
 exportForGit(model,'kmxGEM','..',{'yml'});
 
-%Detect boundary metabolites and save them in a .txt file:
+%Detect boundary metabolites and save them in a .txt file
 fid = fopen('../ModelFiles/boundaryMets.txt','wt');
 for i = 1:length(model.rxns)
     pos = find(model.S(:,i) ~= 0);
@@ -86,7 +89,7 @@ fclose('all');
 delete('backup.md');
 
 %Convert notation "e-005" to "e-05 " in stoich. coeffs. to avoid
-%inconsistencies between Windows and MAC:
+%inconsistencies between Windows and macOS
 copyfile('../ModelFiles/xml/kmxGEM.xml','backup.xml')
 fin  = fopen('backup.xml','r');
 fout = fopen('../ModelFiles/xml/kmxGEM.xml','w');
@@ -107,5 +110,3 @@ delete('backup.xml');
 
 %Switch back to original folder
 cd(currentDir)
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

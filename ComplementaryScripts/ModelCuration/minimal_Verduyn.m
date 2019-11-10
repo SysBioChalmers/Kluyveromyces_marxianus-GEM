@@ -1,14 +1,14 @@
 function model = minimal_Verduyn(model)
-% change Y6 model media to minimal (Verduyn) medium
-% Bicarbonate production is blocked to get rid of conflict due to bicarbonate and carbon dioxide
-% are regarded as equivalent
-% the function is from:https://doi.org/10.1371/journal.pcbi.1004530
+% minimal_Verduyn
+% Sets minimal (Verduyn) medium for the model. The production is allowed
+% for all exchange metabolites, except bicarbonate, which is regarded
+% equivalent to carbon dioxide like in
+% https://doi.org/10.1371/journal.pcbi.1004530
 
-% start with a clean slate: set all exchange reactions to upper bound = 1000
-% and lower bound = 0 (ie, unconstrained excretion, no uptake)
-
-% Based on function minimal_Y6 written by Feiran Li 2018.09.05 (https://github.com/SysBioChalmers/yeast-GEM)
-% Simonas Marcisauskas, 2019-11-08 - adaptation for Kluyveromyces_marxianus-GEM
+% Based on function minimal_Y6 written by Feiran Li 2018.09.05
+% (https://github.com/SysBioChalmers/yeast-GEM)
+% Simonas Marcisauskas, 2019-11-10 - adaptation for
+% Kluyveromyces_marxianus-GEM
 
 exchangeRxns = findExcRxns(model);
 model.lb(exchangeRxns) = 0;
