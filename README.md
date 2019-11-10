@@ -4,7 +4,7 @@
 
 * Brief Model Description:
 
-This repository contains the current consensus genome-scale metabolic model of the ascomycetous yeast _Kluyveromyces marxianus_. The model contains 4 compartments: extracellular, cytosol, mitochondrion and endoplasmic reticulum. For the latest release please [click here](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/releases).
+This repository contains the current consensus genome-scale metabolic model of the ascomycetous yeast _Kluyveromyces marxianus_, named **kmxGEM**. The model contains 4 compartments: extracellular, cytosol, mitochondrion and endoplasmic reticulum. For the latest release please [click here](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/releases).
 
 * Model KeyWords:
 
@@ -49,10 +49,10 @@ This repository is administered by Simonas Marcišauskas ([@simas232](https://gi
 
 Make sure to load/save the model with the corresponding wrapper functions!
 * In MATLAB:
-  * Loading: `complementaryScripts/loadYeastModel.m`
-  * Saving: `complementaryScripts/saveYeastModel.m`
+  * Loading: `ComplementaryScripts/loadKmxModel.m`
+  * Saving: `ComplementaryScripts/saveKmxModel.m`
 * In Python:
-  * Loading: `complementaryScripts/loadYeastModel.py`
+  * Loading: `ComplementaryScripts/loadKmxModel.py`
   * Saving: currently unavailable
 
 ## Model Files
@@ -64,12 +64,12 @@ The model is available in `.xml`, `.txt`, `.yml`, `.mat` and `.xlsx` (the last 2
 ### Complementary Scripts
 
 * `missingFields`: Folder with functions for adding missing fields to the model.
-* `modelCuration`: Folder with curation functions.
+* `ModelCuration`: Folder with curation functions.
 * `otherChanges`: Folder with other types of changes.
-* `increaseVersion.m`: Updates the version of the model in `version.txt` and as metaid in the `.xml` file. Saves the model as `.mat` and as `.xlsx`
-* `loadYeastModel.m`: Loads the yeast model from the `.xml` file for MATLAB.
-* `loadYeastModel.py`: Loads the yeast model from the `.xml` file for Python.
-* `saveYeastModel.m`: Saves yeast model as a `.xml`, `.yml` and `.txt` file, and updates `boundaryMets.txt` and `dependencies.txt`.
+* `increaseKmxVersion.m`: Updates the version of the model in `version.txt` and as metaid in the `.xml` file. Saves the model as `.mat` and as `.xlsx`
+* `loadKmxModel.m`: Loads the yeast model from the `.xml` file for MATLAB.
+* `loadKmxModel.py`: Loads the yeast model from the `.xml` file for Python.
+* `saveKmxModel.m`: Saves yeast model as a `.xml`, `.yml` and `.txt` file, and updates `boundaryMets.txt` and `dependencies.txt`.
 
 ### Complementary Data
 
