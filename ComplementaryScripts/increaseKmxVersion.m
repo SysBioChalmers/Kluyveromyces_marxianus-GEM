@@ -15,7 +15,7 @@ function increaseKmxVersion(bumpType)
 %
 %   Based on function increaseVersion written by Benjamin Sanchez
 %   (https://github.com/SysBioChalmers/yeast-GEM)
-%   Simonas Marcisauskas, 2019-11-10 - adaptation for
+%   Simonas Marcisauskas, 2019-11-11 - adaptation for
 %   Kluyveromyces_marxianus-GEM
 %
 
