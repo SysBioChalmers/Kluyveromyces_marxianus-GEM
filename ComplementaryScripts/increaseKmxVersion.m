@@ -45,12 +45,11 @@ switch bumpType
         error('ERROR: invalid input. Use "major", "minor" or "patch"')
 end
 newVersion = num2str(newVersion,'%d.%d.%d');
-
 %Check if history has been updated
 fid     = fopen('../history.md','r');
 history = fscanf(fid,'%s');
 fclose(fid);
-if ~contains(history,['yeast' newVersion ':'])
+if ~contains(history,['kmxGEM_v' newVersion ':'])
     error('ERROR: update history.md first')
 end
 
@@ -60,7 +59,7 @@ model = readCbModel('../ModelFiles/xml/kmxGEM.xml');
 
 %Include tag and save model
 model.modelID = ['kmxGEM_v' newVersion];
-saveYeastModel(model,false)
+saveKmxModel(model,false)
 
 %Check if any file changed (except for history.md and 1 line in kmxGEM.xml)
 diff   = git('diff --numstat');
