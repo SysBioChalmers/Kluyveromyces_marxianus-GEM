@@ -53,7 +53,7 @@ Here's how to set up Kluyveromyces_marxianus-GEM for local development to contri
     ```
 	
 6. Now you can make your changes locally!
-    * Always make your changes in MATLAB and never directly edit the model files. For loading the model use `loadYeastModel.m`, and for saving the model use `saveYeastModel.m`. The latter will ensure all 3 versions of the model (`.xml`, `.yml` & `.txt`) get updated in the same way.
+    * Always make your changes in MATLAB and never directly edit the model files. For loading the model use `loadKmxModel.m`, and for saving the model use `saveKmxModel.m`. The latter will ensure all 3 versions of the model (`.xml`, `.yml` & `.txt`) get updated in the same way.
     * If your changes are minor (e.g. a single chemical formula you wish to correct), you can do it directly from the command line.
     * If your changes are not so small and require several steps, create a script that loads the model, reads data (if applicable), changes the model accordingly, and saves the model back.
     * Each script should start with a commented section describing the script, explaining the parameters, and indicating your name and the date it was written. Existing functions can clarify what style should be used.
@@ -147,7 +147,7 @@ Follow all other steps in the same way. Also, when creating your pull request (o
 ### Reviewing pull requests
 
 Every pull request must be approved by at least one reviewer before it can be merged. When reviewing someone else's pull request, keep in mind the following aspects:
-* **Compatibility:** First of all, make sure that the model is still compatible with the loading/saving wrappers (`loadYeastModel.m` & `saveYeastModel.m`) and that no errors appear. Check also that [`dependencies.txt`](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/blob/master/ModelFiles/dependencies.txt) does not change in any unexpected ways (e.g. an "unknown" toolbox version). Finally, ensure that the SBML fields `model metaid`, `model id` and `model name` never change, as if they change it would create a conflict in the next release.
+* **Compatibility:** First of all, make sure that the model is still compatible with the loading/saving wrappers (`loadKmxModel.m` & `saveKmxModel.m`) and that no errors appear. Check also that [`dependencies.txt`](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/blob/master/ModelFiles/dependencies.txt) does not change in any unexpected ways (e.g. an "unknown" toolbox version). Finally, ensure that the SBML fields `model metaid`, `model id` and `model name` never change, as if they change it would create a conflict in the next release.
 * **Documentation:** Every change should be justified with a reference/link/argument. This can be provided as data in `/ComplementaryData`, or directly as a comment in the pull request.
 * **Reproducibility:** If there are any added scripts, make sure that if you run them, the model gets updated from how it was in `devel` to how it is in the pull request. For this, you may _locally_ switch to the corresponding branch, replace the `.xml` file with the one from `devel` before the changes, and run the associated scripts. Remember to stash any undesired changes afterwards.
 * **Style:** Ensure that the changes to the model are compliant with the model's rxn/met/gene naming conventions (when unsure, take a look at a similar field in the model). Also, make sure that scripts have a compliant style, and datasets are straight-forward to understand.
@@ -192,11 +192,11 @@ Kluyveromyces_marxianus-GEM follows [semantic versioning](https://semver.org/), 
   * Refactoring of code.
   
 When releasing, please follow these steps:
-  1. Make sure all dependencies in `devel` correspond to the setup from the local computer from which the release will be made. If not, make a single commit in `devel` updating this with a `loadYeastModel`/`saveYeastModel` cycle.
+  1. Make sure all dependencies in `devel` correspond to the setup from the local computer from which the release will be made. If not, make a single commit in `devel` updating this with a `loadKmxModel`/`saveKmxModel` cycle.
   2. Create a pull request from `devel` to `master`, indicating all new features/fixes/etc. and referencing every previous pull request included (examples [here](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/releases)). Tip: if any [issue](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/issues) gets solved in the release, write in the pull request description "Fixes #X", where "X" is the issue number. That way the issue will be automatically closed after merge.
   3. Merge at least a day after (having at least one accepted review).
   4. Switch locally to `master` and update `history.md`, by putting at the top the same description of the corresponding PR from step 2.
-  5. Bump version with `increaseVersion.m`. **NOTE:** The function will error if unexpected changes are occurring. If this happens, probably step 1 was done incorrectly. To fix it, commit in `devel` any necessary changes and make a new pull request.
+  5. Bump version with `increaseKmxVersion.m`. **NOTE:** The function will error if unexpected changes are occurring. If this happens, probably step 1 was done incorrectly. To fix it, commit in `devel` any necessary changes and make a new pull request.
   6. Commit changes from steps 4 and 5 with the message `chore: version X.Y.Z`.
   7. Make the new release at GitHub (https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/releases/new), using the proper tag "vX.Y.Z" and with the same description as the corresponding PR from step 2.
   8. Pull from `master` to `gh-pages` to update the landing page.
