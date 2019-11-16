@@ -1,11 +1,11 @@
 # Benjamin J. Sanchez
-# Simonas Marcisauskas, 2019-11-10 - adaptation for Kluyveromyces_marxianus-GEM
+# Simonas Marcisauskas, 2019-11-16 - adaptation for Kluyveromyces_marxianus-GEM
 
 # -*- coding: utf-8 -*-
 import cobra
 
 # Load model
-model = cobra.io.read_sbml_model('../ModelFiles/xml/kmxGEM.xml')
+model = cobra.io.read_sbml_model('../modelFiles/xml/Kluyveromyces_marxianus-GEM.xml')
 
 # Correct metabolite ids:
 for met in model.metabolites:

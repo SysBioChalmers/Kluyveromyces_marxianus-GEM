@@ -15,7 +15,7 @@ function increaseKmxVersion(bumpType)
 %
 %   Based on function increaseVersion written by Benjamin Sanchez
 %   (https://github.com/SysBioChalmers/yeast-GEM)
-%   Simonas Marcisauskas, 2019-11-11 - adaptation for
+%   Simonas Marcisauskas, 2019-11-16 - adaptation for
 %   Kluyveromyces_marxianus-GEM
 %
 
@@ -26,7 +26,7 @@ if ~strcmp(currentBranch,'master')
 end
 
 %Bump version number
-oldModel   = load('../ModelFiles/mat/kmxGEM.mat');
+oldModel   = load('../modelFiles/mat/Kluyveromyces_marxianus-GEM.mat');
 oldVersion = oldModel.model.modelID;
 oldVersion = oldVersion(strfind(oldVersion,'_v')+2:end);
 oldVersion = str2double(strsplit(oldVersion,'.'));
@@ -49,16 +49,16 @@ newVersion = num2str(newVersion,'%d.%d.%d');
 fid     = fopen('../history.md','r');
 history = fscanf(fid,'%s');
 fclose(fid);
-if ~contains(history,['kmxGEM_v' newVersion ':'])
+if ~contains(history,['Kluyveromyces_marxianus-GEM_v' newVersion ':'])
     error('ERROR: update history.md first')
 end
 
 %Load model
 initCobraToolbox
-model = readCbModel('../ModelFiles/xml/kmxGEM.xml');
+model = readCbModel('../modelFiles/xml/Kluyveromyces_marxianus-GEM.xml');
 
 %Include tag and save model
-model.modelID = ['kmxGEM_v' newVersion];
+model.modelID = ['Kluyveromyces_marxianus-GEM_v' newVersion];
 saveKmxModel(model,false)
 
 %Check if any file changed (except for history.md and 1 line in kmxGEM.xml)
@@ -69,7 +69,7 @@ for i = 1:length(diff)
     diff_i = strsplit(diff{i},'\t');
     if length(diff_i) == 3
         %.xml file: 1 line should be added & 1 line should be deleted
-        if strcmp(diff_i{3},'ModelFiles/xml/kmxGEM.xml')
+        if strcmp(diff_i{3},'modelFiles/xml/Kluyveromyces_marxianus-GEM.xml')
             if eval([diff_i{1} ' > 1']) || eval([diff_i{2} ' > 1'])
                 disp(['NOTE: File ' diff_i{3} ' is changing more than expected'])
                 change = true;
@@ -103,7 +103,7 @@ fclose('all');
 delete('backup');
 
 %Store model as .mat
-save('../ModelFiles/mat/kmxGEM.mat','model');
+save('../modelFiles/mat/Kluyveromyces_marxianus-GEM.mat','model');
 
 %Convert to RAVEN format and store model as .xlsx
 model = ravenCobraWrapper(model);
@@ -115,7 +115,7 @@ model.annotation.familyName   = 'Marcisauskas';
 model.annotation.email        = 'simmarc@chalmers.se';
 model.annotation.organization = 'Chalmers University of Technology';
 model.annotation.note         = 'Kluyveromyces marxianus';
-exportToExcelFormat(model,'../ModelFiles/xlsx/kmxGEM.xlsx');
+exportToExcelFormat(model,'../modelFiles/xlsx/Kluyveromyces_marxianus-GEM.xlsx');
 
 %Update version file
 fid = fopen('../version.txt','wt');

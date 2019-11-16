@@ -12,7 +12,7 @@ function saveKmxModel(model,upDATE)
 %
 %	Based on function saveYeastModel written by Benjamin Sanchez
 %	(https://github.com/SysBioChalmers/yeast-GEM)
-%	Simonas Marcisauskas, 2019-11-10 - adaptation for
+%	Simonas Marcisauskas, 2019-11-16 - adaptation for'
 %	Kluyveromyces_marxianus-GEM
 %
 
@@ -49,13 +49,13 @@ writeCbModel(model,'sbml','tempModel.xml');
 % end
 
 %Update .xml, .txt and .yml models
-copyfile('tempModel.xml','../ModelFiles/xml/kmxGEM.xml')
+copyfile('tempModel.xml','../modelFiles/xml/Kluyveromyces_marxianus-GEM.xml')
 delete('tempModel.xml');
-writeCbModel(model,'text','../ModelFiles/txt/kmxGEM.txt');
-exportForGit(model,'kmxGEM','..',{'yml'});
+writeCbModel(model,'text','../modelFiles/txt/Kluyveromyces_marxianus-GEM.txt');
+exportForGit(model,'Kluyveromyces_marxianus-GEM','..',{'yml'});
 
 %Detect boundary metabolites and save them in a .txt file
-fid = fopen('../ModelFiles/boundaryMets.txt','wt');
+fid = fopen('../modelFiles/boundaryMets.txt','wt');
 for i = 1:length(model.rxns)
     pos = find(model.S(:,i) ~= 0);
     if length(pos) == 1 %Exchange rxn
@@ -90,9 +90,9 @@ delete('backup.md');
 
 %Convert notation "e-005" to "e-05 " in stoich. coeffs. to avoid
 %inconsistencies between Windows and macOS
-copyfile('../ModelFiles/xml/kmxGEM.xml','backup.xml')
+copyfile('../modelFiles/xml/Kluyveromyces_marxianus-GEM.xml','backup.xml')
 fin  = fopen('backup.xml','r');
-fout = fopen('../ModelFiles/xml/kmxGEM.xml','w');
+fout = fopen('../modelFiles/xml/Kluyveromyces_marxianus-GEM.xml','w');
 still_reading = true;
 while still_reading
     inline = fgets(fin);
@@ -110,3 +110,5 @@ delete('backup.xml');
 
 %Switch back to original folder
 cd(currentDir)
+
+end

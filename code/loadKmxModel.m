@@ -7,13 +7,13 @@ function model = loadKmxModel
 %
 %	Based on function loadYeastModel written by Benjamin Sanchez
 %	(https://github.com/SysBioChalmers/yeast-GEM)
-%	Simonas Marcisauskas, 2019-11-10 - adaptation for
+%	Simonas Marcisauskas, 2019-11-16 - adaptation for
 %	Kluyveromyces_marxianus-GEM
 %
 
 scriptFolder = fileparts(which(mfilename));
 currentDir = cd(scriptFolder);
-model = readCbModel('../ModelFiles/xml/kmxGEM.xml');
+model = readCbModel('../modelFiles/xml/Kluyveromyces_marxianus-GEM.xml');
 model = buildRxnGeneMat(model);
 cd(currentDir)
 
