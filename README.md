@@ -4,13 +4,13 @@
 
 * Brief Model Description:
 
-This repository contains the current consensus genome-scale metabolic model of the ascomycetous yeast _Kluyveromyces marxianus_. The model contains 4 compartments: extracellular, cytosol, mitochondrion and endoplasmic reticulum. For the latest release please [click here](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/releases).
+This repository contains the current consensus genome-scale metabolic model of the ascomycetous yeast _Kluyveromyces marxianus_, named **Kluyveromyces_marxianus-GEM**. The model contains 4 compartments: extracellular, cytosol, mitochondrion and endoplasmic reticulum. For the latest release please [click here](https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM/releases).
 
 * Model KeyWords:
 
 **GEM Category:** species; **Utilisation:** experimental data reconstruction, multi-omics integrative analysis, _in silico_ strain design, model template; **Field:** metabolic-network reconstruction; **Type of Model:** reconstruction, curated; **Model Source:** iOD907, [yeast-GEM](https://github.com/SysBioChalmers/yeast-GEM); **Omic Source:** genomics; **Taxonomy:** _Kluyveromyces marxianus_; **Metabolic System:** general metabolism; **Bioreactor**; **Strain;** **Condition:** aerobic, glucose-limited, defined media;
 
-* Last update: 2019-11-08
+* Last update: 2019-11-16
 
 * Main Model Descriptors:
 
@@ -49,10 +49,10 @@ This repository is administered by Simonas Marcišauskas ([@simas232](https://gi
 
 Make sure to load/save the model with the corresponding wrapper functions!
 * In MATLAB:
-  * Loading: `complementaryScripts/loadYeastModel.m`
-  * Saving: `complementaryScripts/saveYeastModel.m`
+  * Loading: `code/loadKmxModel.m`
+  * Saving: `code/saveKmxModel.m`
 * In Python:
-  * Loading: `complementaryScripts/loadYeastModel.py`
+  * Loading: `code/loadKmxModel.py`
   * Saving: currently unavailable
 
 ## Model Files
@@ -61,20 +61,20 @@ The model is available in `.xml`, `.txt`, `.yml`, `.mat` and `.xlsx` (the last 2
 * `dependencies.txt`: Tracks versions of toolboxes & SBML used for saving the model.
 * `boundaryMets.txt`: Contains a list of all boundary metabolites in model, listing the id and name.
 
-### Complementary Scripts
+### Complementary Code
 
 * `missingFields`: Folder with functions for adding missing fields to the model.
 * `modelCuration`: Folder with curation functions.
 * `otherChanges`: Folder with other types of changes.
-* `increaseVersion.m`: Updates the version of the model in `version.txt` and as metaid in the `.xml` file. Saves the model as `.mat` and as `.xlsx`
-* `loadYeastModel.m`: Loads the yeast model from the `.xml` file for MATLAB.
-* `loadYeastModel.py`: Loads the yeast model from the `.xml` file for Python.
-* `saveYeastModel.m`: Saves yeast model as a `.xml`, `.yml` and `.txt` file, and updates `boundaryMets.txt` and `dependencies.txt`.
+* `increaseKmxVersion.m`: Updates the version of the model in `version.txt` and as metaid in the `.xml` file. Saves the model as `.mat` and as `.xlsx`
+* `loadKmxModel.m`: Loads the yeast model from the `.xml` file for MATLAB.
+* `loadKmxModel.py`: Loads the yeast model from the `.xml` file for Python.
+* `saveKmxModel.m`: Saves yeast model as a `.xml`, `.yml` and `.txt` file, and updates `boundaryMets.txt` and `dependencies.txt`.
 
 ### Complementary Data
 
-* `BiomassComposition`: The detailed information about the biomass composition considered in the model.
-* `Proteome`: The list of all proteins for DMKU3-1042 strain. Useful when one wants to convert _K. marxianus_ genes to _S. cerevisiae_ and perform gene knockout simulations.
+* `biomassComposition`: The detailed information about the biomass composition considered in the model.
+* `proteome`: The list of all proteins for DMKU3-1042 strain. Useful when one wants to convert _K. marxianus_ genes to _S. cerevisiae_ and perform gene knockout simulations.
 
 ## Citation
 
